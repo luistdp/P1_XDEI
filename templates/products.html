@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+{% block header %}
+    <h1>{% block title %}Products{% endblock %}</h1>
+{% endblock %}
+{% block content %}
+<ul>
+    {% for product in products %}
+    {% set product_url = product_base_url + product.id %}
+    {% set id_items = product.id.split(':') %}
+    <li>
+        <a href={{product_url}}>Product {{id_items[3]}}</a>
+    </li>
+    {% endfor %}
+ </ul>
+{% endblock %}

@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+{% block header %}
+    <h1>{% block title %}Store{% endblock %}</h1>
+{% endblock %}
+{% block content %}
+    {% set id_items = store.id.split(':') %}
+    <p>
+    Product ID: {{ id_items[3] }}<br>
+    Name: {{ store.name.value }}<br>
+    Size: {{ store.size.value }}<br>
+    Price: {{ store.price.value }}
+    </p>
+{% endblock %}
