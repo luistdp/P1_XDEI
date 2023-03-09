@@ -4,10 +4,17 @@
 {% endblock %}
 {% block content %}
     {% set id_items = store.id.split(':') %}
+    {% set store_name = store.id.split(':') %}
+    {% set id_items = store.id.split(':') %}
+    {% set id_items = store.id.split(':') %}
+    {% set id_items = store.id.split(':') %}
+    {% set id_items = store.id.split(':') %}
     <p>
     Product ID: {{ id_items[3] }}<br>
     Name: {{ store.name.value }}<br>
-    Size: {{ store.size.value }}<br>
-    Price: {{ store.price.value }}
+    Address Region: {{ store.addressRegion.value }}<br>
+    Address Locality: {{ store.addressLocality.value }}<br>
+    Street Address: {{ store.streetAddress.value }}<br>
+    Postal Code: {{ store.postalCode.value }}<br>
     </p>
 {% endblock %}

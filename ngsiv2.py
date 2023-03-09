@@ -19,9 +19,9 @@ def read_entity(entity_id):
     r = requests.get(base_path + '/entities/' + entity_id)
     return (r.status_code, json.loads(r.text))
 
-def list_inventory_items_for_product(product_id):
+def items_for_entity(entity_id,entity_type):
     base_request = base_path + '/entities/' + \
-    '?q=refProduct==' + product_id + '&attrs=id' + \
-    '&options=keyValues&type=InventoryItem'
+    '?q='+ entity_type +'==' + entity_id + \
+    '&options=count&type=InventoryItem'
     r = requests.get(base_request)
     return (r.status_code, json.loads(r.text))

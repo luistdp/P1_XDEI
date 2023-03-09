@@ -1,0 +1,41 @@
+{% extends 'inventoryitem.html' %}
+{% block content %}
+
+{% if inventoryitems %}
+    <table>
+        <tr>
+            <th>ID</th>
+            <th>Store</th>
+            <th>Shelf</th>
+            <th>Shelf Count</th>
+            <th>Stock Count</th>
+        </tr>
+
+        {% for item in inventoryitems%}
+        <tr>
+            {% set id_items = item.id.split(':') %}
+            {% set id_store = item.refStore.value.split(':') %}
+            {% set id_shelf = item.refShelf.value.split(':') %}
+            {% set shelf_count = item.shelfCount.value%}
+            {% set stock_count = item.stockCount.value%}
+            <td>{{id_items[3]}}</td>
+            <td>{{id_store[3]}}</td>
+            <td>{{id_shelf[3]}}</td>
+            <td>{{shelf_count}}</td>
+            <td>{{stock_count}}</td>
+        </tr>
+        {% endfor %}
+
+    </table>
+
+{% else %}
+
+This Product is not present in any Inventory Item.
+
+{% endif %}
+
+<hr/>
+<footer>
+    <p>&copy; 2022 </p>
+</footer>
+{% endblock %}
