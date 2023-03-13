@@ -4,17 +4,19 @@
 {% endblock %}
 {% block content %}
     {% set id_items = store.id.split(':') %}
-    {% set store_name = store.id.split(':') %}
-    {% set id_items = store.id.split(':') %}
-    {% set id_items = store.id.split(':') %}
-    {% set id_items = store.id.split(':') %}
-    {% set id_items = store.id.split(':') %}
+    {% set store_name = store.name.value %}
+    {% set address_region = store.address.value.addressRegion %}
+    {% set address_locality = store.address.value.addressLocality %}
+    {% set street_address = store.address.value.streetAddress %}
+    {% set postal_code = store.address.value.postalCode %}
     <p>
     Product ID: {{ id_items[3] }}<br>
-    Name: {{ store.name.value }}<br>
-    Address Region: {{ store.addressRegion.value }}<br>
-    Address Locality: {{ store.addressLocality.value }}<br>
-    Street Address: {{ store.streetAddress.value }}<br>
-    Postal Code: {{ store.postalCode.value }}<br>
+    Name: {{ store_name }}<br>
+    <address>
+        Address Region: {{ address_region }}<br>
+        Address Locality: {{ address_locality }}<br>
+        Street Address: {{ street_address }}<br>
+        Postal Code: {{ postal_code }}<br>
+    </address>
     </p>
 {% endblock %}

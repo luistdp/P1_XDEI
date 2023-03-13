@@ -49,7 +49,7 @@ def display_store(store_id):
     (status, data) = ngsiv2.read_entity(store_id)
     if status == 200:
         return render_template('store.html', store = data) +\
-        list_inventory_items_for_product(store_id)
+        list_inventory_items_for_store(store_id)
     else:
         return render_template('error.html',
         error = f"Error reading product {store_id}.\
