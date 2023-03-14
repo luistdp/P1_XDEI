@@ -1,9 +1,9 @@
 .navbar {
-    background-color: lightslategray;
-    font-size: 1em;
+    background-color: darkgray;
+    font-size: 1.5em;
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
     color: white;
-    padding: 8px 5px 8px 5px;
+    padding: 15px 7px 15px 7px;
 }
 
 .navbar a {
@@ -12,9 +12,11 @@
 }
 
 .navbar-brand {
-    font-size: 1.2em;
+    font-size: 1.6em;
     font-weight: 600;
+    padding-left: 40%;
 }
+
 
 .navbar-item {
     font-variant: small-caps;
@@ -24,4 +26,47 @@
 .body-content {
     padding: 5px;
     font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.center {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 50%;
+  }
+
+.center_text {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 50%;
+    text-align: center;
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-size: xx-large;
+    padding-top: 50px;
+  }
+
+table.items {
+	border-width: 2px;
+	border-spacing: 3px;
+	border-style: inset;
+	border-color: white;
+	border-collapse: separate;
+	background-color: white;
+}
+table.items th {
+	border-width: 2px;
+	padding: 5px;
+	border-style: groove;
+	border-color: gray;
+	background-color: white;
+    text-align: center;
+}
+table.items td {
+	border-width: 2px;
+	padding: 5px;
+	border-style: groove;
+	border-color: gray;
+	background-color: white;
+    text-align: center;
 }

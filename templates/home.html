@@ -1,9 +1,15 @@
 {% extends 'base.html' %}
 {% block content %}
-<p>
+
+<img src="{{ url_for('static', filename='fiware.png')}}" alt="Fiware" class="center">
+
+<p class="center_text">
     Welcome to the Fiware Smart Store
 </p>
 
-<img src="images/fiware.png">
+<hr/>
+<footer>
+    <p>&copy; 2023 </p>
+</footer>
 
 {% endblock %}
