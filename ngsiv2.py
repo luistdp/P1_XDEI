@@ -25,3 +25,31 @@ def items_for_entity(entity_id,entity_type):
     '&options=count&type=InventoryItem'
     r = requests.get(base_request)
     return (r.status_code, json.loads(r.text))
+
+def create_subscription(body):
+    base_request = base_path + '/subscriptions/'
+    headers = {
+        "Content-Type":"application/json",
+        "fiware-service":"openiot",
+        "fiware-servicepath":"/"
+    }
+    r = requests.post(base_request, data=json.dumps(body), headers=headers)
+    return r.status_code
+
+def delete_subscription(subscription_id):
+    base_request = base_path + f'/subscriptions/{subscription_id}'
+    headers = {
+        "fiware-service":"openiot",
+        "fiware-servicepath":"/"
+    }
+    r = requests.delete(base_request,headers=headers)
+    return r.status_code
+
+def read_subcriptions():
+    base_request = base_path + '/subscriptions/'
+    headers = {
+        "fiware-service":"openiot",
+        "fiware-servicepath":"/"
+    }
+    r = requests.get(base_request, headers=headers)
+    return (r.status_code, json.loads(r.text))
