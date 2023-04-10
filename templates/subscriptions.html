@@ -1,0 +1,68 @@
+{% extends 'base.html' %}
+{% block header %}
+    <h1>{% block title %}Subscriptions{% endblock %}</h1>
+{% endblock %}
+
+{% block content %}
+<table class="items">
+    <tr>
+        <th>ID</th>
+        <th>Description</th>
+        <th>Entities ID Pattern</th>
+        <th>Condition Attrs</th>
+        <th>HTTP URL</th>
+        <th>Attributes</th>
+        <th>Metadata</th>
+        <th>Throttling</th>
+    </tr>
+
+    {% for item in subscriptions%}
+    <tr>
+        {% set id_sub = item.id %}
+        {% set description = item.description %}
+        {% set id_pattern = item.subject.entities[0]['idPattern']%}
+        {% set condition_attrs = item.subject.condition.attrs%}
+        {% set notification_url = item.notification.http.url%}
+        {% set notification_attrs = item.notification.attrs%}
+        {% set metadata = item.notification.metadata%}
+        {% set throttling = item.throttling%}
+        {% set update_url = modify_base_url + id_sub%}
+        <td>{{id_sub}}</td>
+        <td>{{description}}</td>
+        <td>{{id_pattern}}</td>
+        <td>{{condition_attrs}}</td>
+        <td>{{notification_url}}</td>
+        <td>{{notification_attrs}}</td>
+        <td>{{metadata}}</td>
+        {% if throttling %}
+        <td>{{throttling}}</td>
+        {% else %}
+        <td>No data</td>
+        {% endif %}
+        <td>
+            <form method="post" action="{{ url_for('delete_subscription',subscription_id=id_sub)}}">
+                <input type="hidden" name="_method" value="DELETE">
+                <button type="submit">Delete Subscription</button>
+            </form>
+        </td>
+        <td>
+            <form method="get" action="{{ url_for('modify_subscription',subscription_id=id_sub)}}">
+                <input type="hidden" name="_method" value="GET">
+                <button type="submit">Modify Subscription</button>
+            </form>
+        </td>
+    </tr>
+    {% endfor %}
+
+</table>
+ 
+<form method="get" action="{{ url_for('create_subscription')}}">
+    <input type="hidden" name="_method" value="GET">
+    <button type="submit">Create Subscription</button>
+</form>
+
+ <hr/>
+ <footer>
+     <p>&copy; 2023 </p>
+ </footer>
+{% endblock %}

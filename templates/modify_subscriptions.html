@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+{% block header %}
+    <h1>{% block title %}Modify Subscription{% endblock %}</h1>
+{% endblock %}
+{% block content %}
+ {% set id_sub = subscription_id %}
+<form method="post" action="{{ url_for('modify_subscription', subscription_id = id_sub)}}">
+    <label for="description">Description:</label><br>
+    <input type="text" id="description" name="description"><br>
+    <label for="entity_id">Entities ID Pattern:</label><br>
+    <input type="text" id="entity_id" name="entity_id"><br>
+    <label for="condition_attrs">Condition Attrs:</label><br>
+    <input type="text" id="condition_attrs" name="condition_attrs"><br>
+    <label for="httpurl">HTTP URL:</label><br>
+    <input type="text" id="http url" name="httpurl"><br>
+    <label for="attributes">Attributes:</label><br>
+    <input type="text" id="attributes" name="attributes"><br>
+    <label for="metadata">Metadata:</label><br>
+    <input type="text" id="metadata" name="metadata"><br>
+    <label for="throttling">Throttling:</label><br>
+    <input type="text" id="throttling" name="throttling"><br><br>
+    <input type="submit" value="Submit">
+  </form>
+{% endblock %}

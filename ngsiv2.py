@@ -45,6 +45,15 @@ def delete_subscription(subscription_id):
     r = requests.delete(base_request,headers=headers)
     return r.status_code
 
+def delete_subscriptions(subscription_ids):
+    for sub_id in subscription_ids:
+        status_code = delete_subscription(sub_id)
+        if status_code == 204:
+            continue
+        else:
+            raise Exception("Error al intentar borrar subscripción")
+    return True
+
 def read_subcriptions():
     base_request = base_path + '/subscriptions/'
     headers = {
@@ -53,3 +62,22 @@ def read_subcriptions():
     }
     r = requests.get(base_request, headers=headers)
     return (r.status_code, json.loads(r.text))
+
+def read_subscription(subscription_id):
+    base_request = base_path + f'/subscriptions/{subscription_id}'
+    headers = {
+        "fiware-service":"openiot",
+        "fiware-servicepath":"/"
+    }
+    r = requests.get(base_request, headers=headers)
+    return (r.status_code, json.loads(r.text))
+
+def update_subscription(subscription_id,data):
+    base_request = base_path + f'/subscriptions/{subscription_id}'
+    headers = {
+        "fiware-service":"openiot",
+        "fiware-servicepath":"/",
+        "content-type":"application/json"
+    }
+    r = requests.patch(base_request,data=json.dumps(data),headers=headers)
+    return r.status_code
